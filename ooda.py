@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import time
+st.session_state['loaded'] = 0
 
 st.header('OODAhack')
 df = pd.read_csv('data_with_summary.csv')
@@ -14,13 +15,17 @@ print(sum_dict['Threat Actions'])
 st.sidebar.subheader('Pull in Data')
 loaded = st.sidebar.text_input('', help="please enter the URL")
 
-if loaded:
-    my_bar = st.progress(0, text='Pulling reports')
+if loaded: 
+    st.session_state['loaded']+= 1
+
+if st.session_state['loaded'] == 1:
+    my_bar = st.progress(0)
     for percent_complete in range(100):
         time.sleep(0.01)
-        my_bar.progress(percent_complete + 1, text='Pulling reports')
-    time.sleep(1)
+        my_bar.progress(percent_complete + 1)
     my_bar.empty()
+    st.session_state['loaded']+= 1
+    print(st.session_state['loaded'])
 
     st.sidebar.title('Documents Loaded')
 
