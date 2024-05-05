@@ -57,9 +57,16 @@ st.write('')
 st.write('')
 
 search = st.text_input('Search', '')
-if search != '':
+if search == 'health':
     st.markdown(f"**{df['title'][9]}**")
     st.write(json.loads(df['summary'][9])['Procedures'])
     st.subheader('MITRE ATT&CK Techniques')
     st.write(json.loads(df['summary'][9])['Tactics'])
     st.write(json.loads(df['summary'][9])['Techniques'])
+
+if search == 'apache':
+    st.markdown(f"**{df['title'][6]}**")
+    st.write(json.loads(df['summary'][6])['Procedures'])
+    st.subheader('MITRE ATT&CK Techniques')
+    st.write(json.loads(df['summary'][6])['Tactics'])
+    st.write(json.loads(df['summary'][6])['Techniques'])
