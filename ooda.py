@@ -64,8 +64,9 @@ if search == 'health':
     st.write(json.loads(df['summary'][9])['Tactics'])
     st.write(json.loads(df['summary'][9])['Techniques'])
 
-if search == 'apache':
+if search == 'web server':
     st.markdown(f"**{df['title'][6]}**")
+    st.write(f"https://firebasestorage.googleapis.com/v0/b/ooda-nsec.appspot.com/o/data%2Fweb%20server%20affected.pdf?alt=media&token=8c481e05-9e8d-4f28-b70b-b21eea99cb3a")
     st.write(json.loads(df['summary'][6])['Procedures'])
     st.subheader('MITRE ATT&CK Techniques')
     st.write(json.loads(df['summary'][6])['Tactics'])
