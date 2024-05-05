@@ -14,14 +14,14 @@ print(sum_dict['Threat Actions'])
 st.sidebar.subheader('Pull in Data')
 loaded = st.sidebar.text_input('', help="please enter the URL")
 
-my_bar = st.progress(0, text='Pulling reports')
-for percent_complete in range(100):
-    time.sleep(0.01)
-    my_bar.progress(percent_complete + 1, text='Pulling reports')
-time.sleep(1)
-my_bar.empty()
-
 if loaded:
+    my_bar = st.progress(0, text='Pulling reports')
+    for percent_complete in range(100):
+        time.sleep(0.01)
+        my_bar.progress(percent_complete + 1, text='Pulling reports')
+    time.sleep(1)
+    my_bar.empty()
+
     st.sidebar.title('Documents Loaded')
 
     for index, row in df.iterrows():
