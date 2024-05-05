@@ -4,7 +4,7 @@ import json
 
 df = pd.read_csv('data_with_summary.csv')
 
-sum = df['summary'][7]
+sum = df['summary'][9]
 sum_dict = json.loads(sum)
 print(sum_dict['Threat Actions'])
 
@@ -47,12 +47,19 @@ with one:
         st.write(json.loads(df['summary'][1])['Techniques'])
 
 with two:
-    # space
-    # st.write('')
-    # st.write('')
-   
     st.write('count: 4')
     st.write('')
     st.write('count: 3')
     st.write('')
     st.write('count: 1')
+
+st.write('')
+st.write('')
+
+search = st.text_input('Search', '')
+if search != '':
+    st.markdown(f"**{df['title'][9]}**")
+    st.write(json.loads(df['summary'][9])['Procedures'])
+    st.subheader('MITRE ATT&CK Techniques')
+    st.write(json.loads(df['summary'][9])['Tactics'])
+    st.write(json.loads(df['summary'][9])['Techniques'])
